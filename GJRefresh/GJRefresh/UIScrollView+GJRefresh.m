@@ -10,11 +10,6 @@
 #import "GJRefreshBaseView.h"
 #import <objc/runtime.h>
 
-typedef NS_ENUM(NSUInteger, GJRefreshViewType) {
-    GJRefreshViewHeader,
-    GJRefreshViewFooter,
-};
-
 @interface GJRefreshBaseView ()
 - (void)_addRefreshViewToScrollView:(UIScrollView *)scrollView;
 - (void)_removeRefreshView;
@@ -72,6 +67,5 @@ typedef NS_ENUM(NSUInteger, GJRefreshViewType) {
         }
     };
 }
-
 
 @end

@@ -85,4 +85,8 @@
     }
     return 0;
 }
+
+- (CGFloat)_currentPullingOffset {
+    return self.scrollView.contentOffset.y - [self _refreshThreshold];
+}
 @end

@@ -27,6 +27,8 @@ typedef NS_ENUM(NSUInteger, GJRefreshState) {
 
 @property (nonatomic, assign, readonly) GJRefreshState state;
 
+@property (nonatomic, assign) CGFloat pullingProgress;
+
 #pragma mark- call back
 
 @property (nonatomic, weak) id target;
@@ -52,6 +54,8 @@ typedef NS_ENUM(NSUInteger, GJRefreshState) {
 - (void)commonInit;
 
 - (void)beginPullingFromState:(GJRefreshState)state;
+
+- (void)pullingProgressHasChanged:(CGFloat)progress;
 
 - (void)canRefresh;
 

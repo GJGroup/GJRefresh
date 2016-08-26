@@ -39,6 +39,8 @@
 
 - (void)beginPullingFromState:(GJRefreshState)state {}
 
+- (void)pullingProgressHasChanged:(CGFloat)progress {NSLog(@"%@",@(progress));}
+
 - (void)canRefresh {}
 
 - (void)refreshing {}
@@ -164,6 +166,8 @@
         self.state = GJRefreshStateCanRefresh;
     }
     else if ((self.state == GJRefreshStatePulling || self.state == GJRefreshStateCanRefresh) && [self _isNormalOffset]) {
+        self.pullingProgress =  fmin(fabs([self _currentPullingOffset] / self.pullingOffset),1);
+        [self pullingProgressHasChanged:self.pullingProgress];
         self.state = GJRefreshStateNormal;
     }
     
@@ -171,6 +175,12 @@
         self.state = GJRefreshStateRefreshing;
         self.scrollView.contentInset = [self _refreshingInsets];
         self.scrollView.contentOffset = contentOffset;
+    }
+    
+    if (self.state == GJRefreshStatePulling ||
+        self.state == GJRefreshStateCanRefresh) {
+        self.pullingProgress =  fmin(fabs([self _currentPullingOffset] / self.pullingOffset),1);
+        [self pullingProgressHasChanged:self.pullingProgress];
     }
 }
 
@@ -238,4 +248,7 @@
 
 - (void)_resetScrollViewContentInsets {}
 
+- (CGFloat)_currentPullingOffset{
+    return self.scrollView.contentOffset.y;
+}
 @end
