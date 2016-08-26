@@ -15,6 +15,7 @@
 		422E41491D50BB4B00761DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422E41471D50BB4B00761DB5 /* LaunchScreen.storyboard */; };
 		423BE4F21D64C404009FED19 /* GJRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 423BE4F11D64C404009FED19 /* GJRefreshHeader.m */; };
 		423BE4F51D658189009FED19 /* GJRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 423BE4F41D658189009FED19 /* GJRefreshFooter.m */; };
+		42D3487E1D709D2D00A97A7C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 42D3487D1D709D2D00A97A7C /* README.md */; };
 		42E9C54C1D5C2BD100999C70 /* GJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E9C54B1D5C2BD100999C70 /* GJRefreshBaseView.m */; };
 		42E9C54F1D5C2DE500999C70 /* UIScrollView+GJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E9C54E1D5C2DE500999C70 /* UIScrollView+GJRefresh.m */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		423BE4F11D64C404009FED19 /* GJRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJRefreshHeader.m; sourceTree = "<group>"; };
 		423BE4F31D658189009FED19 /* GJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJRefreshFooter.h; sourceTree = "<group>"; };
 		423BE4F41D658189009FED19 /* GJRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJRefreshFooter.m; sourceTree = "<group>"; };
+		42D3487D1D709D2D00A97A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42E9C54A1D5C2BD100999C70 /* GJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJRefreshBaseView.h; sourceTree = "<group>"; };
 		42E9C54B1D5C2BD100999C70 /* GJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJRefreshBaseView.m; sourceTree = "<group>"; };
 		42E9C54D1D5C2DE500999C70 /* UIScrollView+GJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+GJRefresh.h"; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		422E412D1D50BB4B00761DB5 = {
 			isa = PBXGroup;
 			children = (
+				42D3487D1D709D2D00A97A7C /* README.md */,
 				422E41381D50BB4B00761DB5 /* GJRefresh */,
 				422E41371D50BB4B00761DB5 /* Products */,
 			);
@@ -184,6 +187,7 @@
 				42E9C54F1D5C2DE500999C70 /* UIScrollView+GJRefresh.m in Sources */,
 				422E413E1D50BB4B00761DB5 /* AppDelegate.m in Sources */,
 				422E413B1D50BB4B00761DB5 /* main.m in Sources */,
+				42D3487E1D709D2D00A97A7C /* README.md in Sources */,
 				423BE4F21D64C404009FED19 /* GJRefreshHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
