@@ -55,7 +55,7 @@
 - (void)_setChangeStateBlock:(GJRefreshBaseView *)refreshView {
     __weak typeof(self) weakSelf = self;
     refreshView._stateChanged = ^(GJRefreshState state, GJRefreshState originState, GJRefreshBaseView *refreshView) {
-        if (!weakSelf.autoLock) return;
+        if (!weakSelf.gj_autoLock) return;
         
         if (state == GJRefreshStateRefreshing) {
             if (refreshView == [weakSelf gj_footer]) [[weakSelf gj_header] _lockRefreshView];

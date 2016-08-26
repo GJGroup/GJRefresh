@@ -15,5 +15,5 @@
 @property (nonatomic, strong) GJRefreshBaseView *gj_header;
 @property (nonatomic, strong) GJRefreshBaseView *gj_footer;
 
-@property (nonatomic, assign) BOOL autoLock;
+@property (nonatomic, assign) BOOL gj_autoLock;
 @end
