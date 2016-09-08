@@ -37,6 +37,8 @@ typedef NS_ENUM(NSUInteger, GJRefreshState) {
 
 @property (nonatomic, copy) void(^refreshingBlock)(void);
 
++ (instancetype)initWithRefreshingTarget:(id)target selector:(SEL)selector;
+
 #pragma mark- actions
 
 - (void)startRefresh;
@@ -49,16 +51,22 @@ typedef NS_ENUM(NSUInteger, GJRefreshState) {
 
 - (void)setDisabled:(BOOL)disabled;
 
-#pragma mark- life cycle
+#pragma mark- life cycle (inherit & implement)
 
+/**
+ *  called by init
+ */
 - (void)commonInit;
 
 - (void)beginPullingFromState:(GJRefreshState)state;
 
-- (void)pullingProgressHasChanged:(CGFloat)progress;
+- (void)pullingProgressDidChanged:(CGFloat)progress;
 
 - (void)canRefresh;
 
+/**
+ *  start refreshing
+ */
 - (void)refreshing;
 
 - (void)refreshComplete;

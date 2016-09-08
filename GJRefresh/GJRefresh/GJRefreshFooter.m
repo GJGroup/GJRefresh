@@ -9,7 +9,6 @@
 #import "GJRefreshFooter.h"
 
 @interface GJRefreshFooter ()
-@property (nonatomic, weak) NSLayoutConstraint * layoutVertical;
 @property (nonatomic, weak) UIScrollView *scrollView;
 @end
 
@@ -24,31 +23,26 @@
 }
 
 #pragma mark- private inherit
-
-- (void)_addConstraintsToScrollView {
-    NSLayoutConstraint *layoutWidth = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
-    NSLayoutConstraint *layoutHeight = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.height];
-    NSLayoutConstraint *layoutLeft = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-    NSLayoutConstraint *layoutRight = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-    self.layoutVertical = [NSLayoutConstraint constraintWithItem:self
-                                                       attribute:NSLayoutAttributeTop
-                                                       relatedBy:NSLayoutRelationEqual
-                                                          toItem:self.scrollView
-                                                       attribute:NSLayoutAttributeBottom
-                                                      multiplier:1.0
-                                                        constant:0];
-    
-    [self.scrollView addConstraints:@[layoutWidth,layoutHeight,layoutLeft,layoutRight,self.layoutVertical]];
+//called when scrollView's frame did changed.
+- (void)_resestRefreshView {
+    [self _resetFrame];
 }
 
 - (void)_scrollView:(UIScrollView *)scrollView contentSizeDidChanged:(CGSize)contentSize {
-    
-    if (contentSize.height < self.scrollView.bounds.size.height) {
-        self.layoutVertical.constant = self.scrollView.bounds.size.height - contentSize.height;
+    [self _resetFrame];
+}
+
+- (void)_resetFrame {
+    CGRect originFrame = self.frame;
+    originFrame.size.width = self.scrollView.bounds.size.width;
+    originFrame.size.height = self.height;
+    if (self.scrollView.contentSize.height < self.scrollView.bounds.size.height) {
+        originFrame.origin.y = self.scrollView.bounds.size.height;
     }
     else {
-        self.layoutVertical.constant = 0;
+        originFrame.origin.y = self.scrollView.contentSize.height;
     }
+    self.frame = originFrame;
 }
 
 - (BOOL)_isPullingOffset {
@@ -65,8 +59,14 @@
 
 - (UIEdgeInsets)_refreshingInsets {
     UIEdgeInsets insets = self.scrollView.contentInset;
-    insets.bottom = self.pullingOffset;
-    return insets;}
+    if (self.scrollView.contentSize.height < self.scrollView.bounds.size.height) {
+        insets.bottom = self.pullingOffset + self.scrollView.bounds.size.height - self.scrollView.contentSize.height;
+    }
+    else {
+        insets.bottom = self.pullingOffset;
+    }
+    return insets;
+}
 
 - (void)_resetScrollViewContentInsets {
     UIEdgeInsets insets = self.scrollView.contentInset;

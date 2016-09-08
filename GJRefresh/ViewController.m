@@ -7,33 +7,80 @@
 //
 
 #import "ViewController.h"
-#import "GJRefreshHeader.h"
-#import "GJRefreshFooter.h"
+#import "GCRefreshFooter.h"
+#import "GCRefreshHeader.h"
 #import "UIScrollView+GJRefresh.h"
+#import "AFHTTPSessionManager.h"
 
-@interface ViewController ()
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataList;
+@property (nonatomic, strong) AFHTTPSessionManager *httpManager;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.scrollView.gj_header = [[GJRefreshHeader alloc] init];
-    self.scrollView.gj_footer = [[GJRefreshFooter alloc] init];
-    self.scrollView.gj_footer.backgroundColor = [UIColor redColor];
-    self.scrollView.gj_header.backgroundColor = [UIColor redColor];
-    self.scrollView.autoLock = YES;
-    
-    self.scrollView.gj_header.pullingOffset = 80;
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
-    [self.scrollView addGestureRecognizer:tap];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"movieCell"];
+    self.tableView.gj_header = [GCRefreshHeader initWithRefreshingTarget:self selector:@selector(headerRefreshing)];
+    self.tableView.gj_footer = [GCRefreshFooter initWithRefreshingTarget:self selector:@selector(footerRefreshing)];
+    self.tableView.gj_autoLock = YES;
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tap {
-    [self.scrollView.gj_header endRefreshing];
+- (void)headerRefreshing {
+    [self.httpManager GET:@"http://facebook.github.io/react-native/movies.json"
+               parameters:nil
+                 progress:nil
+                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                      NSArray *movies = responseObject[@"movies"];
+                      self.dataList = movies.mutableCopy;
+                      [self.tableView reloadData];
+                      [self.tableView.gj_header endRefreshing];
+                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                      [self.tableView.gj_header endRefreshing];
+                  }];
+}
+
+- (void)footerRefreshing {
+    [self.httpManager GET:@"http://facebook.github.io/react-native/movies.json"
+               parameters:nil
+                 progress:nil
+                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                      NSArray *movies = responseObject[@"movies"];
+                      [self.dataList addObjectsFromArray:movies];;
+                      [self.tableView reloadData];
+                      [self.tableView.gj_footer endRefreshing];
+                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                      [self.tableView.gj_footer endRefreshing];
+                  }];
+}
+
+- (AFHTTPSessionManager *)httpManager {
+    if (!_httpManager) {
+        _httpManager = [AFHTTPSessionManager manager];
+    }
+    return _httpManager;
+}
+
+#pragma mark- tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataList.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"movieCell"];
+    NSDictionary *movie = self.dataList[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@-%@",movie[@"title"],movie[@"releaseYear"]];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -44,11 +44,11 @@
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setAutoLock:(BOOL)autoLock {
-    objc_setAssociatedObject(self, @selector(autoLock), @(autoLock), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setGj_autoLock:(BOOL)gj_autoLock {
+    objc_setAssociatedObject(self, @selector(gj_autoLock), @(gj_autoLock), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)autoLock {
+- (BOOL)gj_autoLock {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 } 
 

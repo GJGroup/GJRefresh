@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4220CA841D81158F006E98A0 /* GCRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220CA831D81158F006E98A0 /* GCRefreshFooter.m */; };
+		4220CA871D813094006E98A0 /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220CA861D813094006E98A0 /* MMScrollView.m */; };
+		4221FAF01D7FB65D00E655E8 /* GCRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4221FAEF1D7FB65D00E655E8 /* GCRefreshHeader.m */; };
+		4221FAF31D7FB6D000E655E8 /* GCRefreshIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4221FAF21D7FB6D000E655E8 /* GCRefreshIconView.m */; };
 		422E413B1D50BB4B00761DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 422E413A1D50BB4B00761DB5 /* main.m */; };
 		422E413E1D50BB4B00761DB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 422E413D1D50BB4B00761DB5 /* AppDelegate.m */; };
 		422E41411D50BB4B00761DB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422E41401D50BB4B00761DB5 /* ViewController.m */; };
@@ -18,9 +22,18 @@
 		42D3487E1D709D2D00A97A7C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 42D3487D1D709D2D00A97A7C /* README.md */; };
 		42E9C54C1D5C2BD100999C70 /* GJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E9C54B1D5C2BD100999C70 /* GJRefreshBaseView.m */; };
 		42E9C54F1D5C2DE500999C70 /* UIScrollView+GJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E9C54E1D5C2DE500999C70 /* UIScrollView+GJRefresh.m */; };
+		5F71B93864CC8A39900A5FF4 /* libPods-GJRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D94A1ADF918DB7399CFD0C00 /* libPods-GJRefresh.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4220CA821D81158F006E98A0 /* GCRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRefreshFooter.h; sourceTree = "<group>"; };
+		4220CA831D81158F006E98A0 /* GCRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRefreshFooter.m; sourceTree = "<group>"; };
+		4220CA851D813094006E98A0 /* MMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScrollView.h; sourceTree = "<group>"; };
+		4220CA861D813094006E98A0 /* MMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScrollView.m; sourceTree = "<group>"; };
+		4221FAEE1D7FB65D00E655E8 /* GCRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRefreshHeader.h; sourceTree = "<group>"; };
+		4221FAEF1D7FB65D00E655E8 /* GCRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRefreshHeader.m; sourceTree = "<group>"; };
+		4221FAF11D7FB6D000E655E8 /* GCRefreshIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRefreshIconView.h; sourceTree = "<group>"; };
+		4221FAF21D7FB6D000E655E8 /* GCRefreshIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRefreshIconView.m; sourceTree = "<group>"; };
 		422E41361D50BB4B00761DB5 /* GJRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GJRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422E413A1D50BB4B00761DB5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		422E413C1D50BB4B00761DB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,6 +53,9 @@
 		42E9C54B1D5C2BD100999C70 /* GJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJRefreshBaseView.m; sourceTree = "<group>"; };
 		42E9C54D1D5C2DE500999C70 /* UIScrollView+GJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+GJRefresh.h"; sourceTree = "<group>"; };
 		42E9C54E1D5C2DE500999C70 /* UIScrollView+GJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+GJRefresh.m"; sourceTree = "<group>"; };
+		664CE4BBF736DA84921144B9 /* Pods-GJRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GJRefresh.release.xcconfig"; path = "Pods/Target Support Files/Pods-GJRefresh/Pods-GJRefresh.release.xcconfig"; sourceTree = "<group>"; };
+		7F79945FA05EAC15AF207B6A /* Pods-GJRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GJRefresh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GJRefresh/Pods-GJRefresh.debug.xcconfig"; sourceTree = "<group>"; };
+		D94A1ADF918DB7399CFD0C00 /* libPods-GJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GJRefresh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,18 +63,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F71B93864CC8A39900A5FF4 /* libPods-GJRefresh.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4221FAED1D7FB63100E655E8 /* RefreshDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4221FAF11D7FB6D000E655E8 /* GCRefreshIconView.h */,
+				4221FAF21D7FB6D000E655E8 /* GCRefreshIconView.m */,
+				4221FAEE1D7FB65D00E655E8 /* GCRefreshHeader.h */,
+				4221FAEF1D7FB65D00E655E8 /* GCRefreshHeader.m */,
+				4220CA821D81158F006E98A0 /* GCRefreshFooter.h */,
+				4220CA831D81158F006E98A0 /* GCRefreshFooter.m */,
+			);
+			path = RefreshDemo;
+			sourceTree = "<group>";
+		};
 		422E412D1D50BB4B00761DB5 = {
 			isa = PBXGroup;
 			children = (
 				42D3487D1D709D2D00A97A7C /* README.md */,
 				422E41381D50BB4B00761DB5 /* GJRefresh */,
 				422E41371D50BB4B00761DB5 /* Products */,
+				BE9F375E52CE79EE778EE477 /* Pods */,
+				D6F53CD99EA97808EC06164A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,8 +106,11 @@
 			isa = PBXGroup;
 			children = (
 				422E41501D50BE3800761DB5 /* GJRefresh */,
+				4221FAED1D7FB63100E655E8 /* RefreshDemo */,
 				422E413C1D50BB4B00761DB5 /* AppDelegate.h */,
 				422E413D1D50BB4B00761DB5 /* AppDelegate.m */,
+				4220CA851D813094006E98A0 /* MMScrollView.h */,
+				4220CA861D813094006E98A0 /* MMScrollView.m */,
 				422E413F1D50BB4B00761DB5 /* ViewController.h */,
 				422E41401D50BB4B00761DB5 /* ViewController.m */,
 				422E41421D50BB4B00761DB5 /* Main.storyboard */,
@@ -110,6 +145,23 @@
 			path = GJRefresh;
 			sourceTree = "<group>";
 		};
+		BE9F375E52CE79EE778EE477 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F79945FA05EAC15AF207B6A /* Pods-GJRefresh.debug.xcconfig */,
+				664CE4BBF736DA84921144B9 /* Pods-GJRefresh.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D6F53CD99EA97808EC06164A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D94A1ADF918DB7399CFD0C00 /* libPods-GJRefresh.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 422E414D1D50BB4B00761DB5 /* Build configuration list for PBXNativeTarget "GJRefresh" */;
 			buildPhases = (
+				A585DC11FDA3732B79C2B041 /* [CP] Check Pods Manifest.lock */,
 				422E41321D50BB4B00761DB5 /* Sources */,
 				422E41331D50BB4B00761DB5 /* Frameworks */,
 				422E41341D50BB4B00761DB5 /* Resources */,
+				870518566CAB0BBC91A9CBC3 /* [CP] Embed Pods Frameworks */,
+				D6FC55DBDA6BAF489BD012CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,12 +231,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		870518566CAB0BBC91A9CBC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GJRefresh/Pods-GJRefresh-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A585DC11FDA3732B79C2B041 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6FC55DBDA6BAF489BD012CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GJRefresh/Pods-GJRefresh-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		422E41321D50BB4B00761DB5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				423BE4F51D658189009FED19 /* GJRefreshFooter.m in Sources */,
+				4220CA871D813094006E98A0 /* MMScrollView.m in Sources */,
 				42E9C54C1D5C2BD100999C70 /* GJRefreshBaseView.m in Sources */,
 				422E41411D50BB4B00761DB5 /* ViewController.m in Sources */,
 				42E9C54F1D5C2DE500999C70 /* UIScrollView+GJRefresh.m in Sources */,
@@ -189,6 +293,9 @@
 				422E413B1D50BB4B00761DB5 /* main.m in Sources */,
 				42D3487E1D709D2D00A97A7C /* README.md in Sources */,
 				423BE4F21D64C404009FED19 /* GJRefreshHeader.m in Sources */,
+				4221FAF31D7FB6D000E655E8 /* GCRefreshIconView.m in Sources */,
+				4221FAF01D7FB65D00E655E8 /* GCRefreshHeader.m in Sources */,
+				4220CA841D81158F006E98A0 /* GCRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,29 +405,33 @@
 		};
 		422E414E1D50BB4B00761DB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F79945FA05EAC15AF207B6A /* Pods-GJRefresh.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 妍蕾 王 (K2Y5W6VX6U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 妍蕾 王 (K2Y5W6VX6U)";
 				INFOPLIST_FILE = GJRefresh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.creditease.GJRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "de6f5bac-d66c-4d08-9bd8-baee2b65a0de";
 			};
 			name = Debug;
 		};
 		422E414F1D50BB4B00761DB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 664CE4BBF736DA84921144B9 /* Pods-GJRefresh.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 妍蕾 王 (K2Y5W6VX6U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 妍蕾 王 (K2Y5W6VX6U)";
 				INFOPLIST_FILE = GJRefresh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.creditease.GJRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "de6f5bac-d66c-4d08-9bd8-baee2b65a0de";
 			};
 			name = Release;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "GJRefreshBaseView.h"
+#import <objc/runtime.h>
 
 @interface GJRefreshBaseView ()
 @property (nonatomic, weak) UIScrollView *scrollView;
@@ -20,6 +21,13 @@
 
 #pragma mark- init
 
++ (instancetype)initWithRefreshingTarget:(id)target selector:(SEL)selector {
+    GJRefreshBaseView *refreshView = [[self alloc] init];
+    refreshView.target = target;
+    refreshView.refreshingSelector = selector;
+    return refreshView;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -31,15 +39,13 @@
 - (void)commonInit {
     self.height = 50;
     self.pullingOffset = self.height;
-    self.translatesAutoresizingMaskIntoConstraints = NO;
-    self.backgroundColor = [UIColor yellowColor];
 }
 
 #pragma mark- life cycle
 
 - (void)beginPullingFromState:(GJRefreshState)state {}
 
-- (void)pullingProgressHasChanged:(CGFloat)progress {NSLog(@"%@",@(progress));}
+- (void)pullingProgressDidChanged:(CGFloat)progress {}
 
 - (void)canRefresh {}
 
@@ -124,6 +130,7 @@
             str = @"can refresh";
             break;
         case GJRefreshStateRefreshing:
+            [self _excuteRefreshingAction];
             [self refreshing];
             str = @"refreshing";
             break;
@@ -137,8 +144,9 @@
         default:
             break;
     }
-
+#if DEBUG
     NSLog(@"%@",str);
+#endif
 }
 
 #pragma mark- KVO callback
@@ -159,15 +167,14 @@
 - (void)_scrollView:(UIScrollView *)scrollView contentOffsetDidChanged:(CGPoint)contentOffset {
     if (self.state == GJRefreshStateLocked) return;
 
-    if ((self.state == GJRefreshStateNormal || self.state == GJRefreshStateCanRefresh) && [self _isPullingOffset]) {
+    if ((self.state == GJRefreshStateNormal || (self.state == GJRefreshStateCanRefresh && self.scrollView.isDragging)) &&
+        [self _isPullingOffset]) {
         self.state = GJRefreshStatePulling;
     }
     else if ((self.state == GJRefreshStatePulling || self.state == GJRefreshStateNormal) && [self _isCanRefreshOffset]) {
         self.state = GJRefreshStateCanRefresh;
     }
     else if ((self.state == GJRefreshStatePulling || self.state == GJRefreshStateCanRefresh) && [self _isNormalOffset]) {
-        self.pullingProgress =  fmin(fabs([self _currentPullingOffset] / self.pullingOffset),1);
-        [self pullingProgressHasChanged:self.pullingProgress];
         self.state = GJRefreshStateNormal;
     }
     
@@ -177,10 +184,11 @@
         self.scrollView.contentOffset = contentOffset;
     }
     
-    if (self.state == GJRefreshStatePulling ||
-        self.state == GJRefreshStateCanRefresh) {
-        self.pullingProgress =  fmin(fabs([self _currentPullingOffset] / self.pullingOffset),1);
-        [self pullingProgressHasChanged:self.pullingProgress];
+    if (self.state == GJRefreshStatePulling || self.state == GJRefreshStateCanRefresh || self.state == GJRefreshStateNormal) {
+        if (self.state == GJRefreshStateCanRefresh && self.pullingProgress == 1.0) return;
+        if (self.state == GJRefreshStateNormal && self.pullingProgress == 0) return;
+        self.pullingProgress = fmin(fabs([self _currentPullingOffset] / self.pullingOffset),1);
+        [self pullingProgressDidChanged:self.pullingProgress];
     }
 }
 
@@ -201,9 +209,13 @@
                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                     context:nil];
     
-    [self _addConstraintsToScrollView];
+    [self _resestRefreshView];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self _resestRefreshView];
+}
 - (void)_removeRefreshView {
     if (self.superview) {
         [self removeFromSuperview];
@@ -213,21 +225,9 @@
 }
 
 #pragma mark- private inherit
-- (void)_addConstraintsToScrollView {
-
-    NSLayoutConstraint *layoutWidth = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
-    NSLayoutConstraint *layoutHeight = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.height];
-    NSLayoutConstraint *layoutLeft = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-    NSLayoutConstraint *layoutRight = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-    NSLayoutConstraint *layoutVertical
-    = [NSLayoutConstraint constraintWithItem:self
-                                   attribute:NSLayoutAttributeBottom
-                                   relatedBy:NSLayoutRelationEqual
-                                      toItem:self.scrollView
-                                   attribute:NSLayoutAttributeTop
-                                  multiplier:1.0
-                                    constant:0];
-    [self.scrollView addConstraints:@[layoutWidth,layoutHeight,layoutLeft,layoutRight,layoutVertical]];
+- (void)_resestRefreshView {
+    CGRect frame = CGRectMake(0, - self.height, self.scrollView.bounds.size.width, self.height);
+    self.frame = frame;
 }
 
 - (BOOL)_isPullingOffset {
@@ -250,5 +250,16 @@
 
 - (CGFloat)_currentPullingOffset{
     return self.scrollView.contentOffset.y;
+}
+
+#pragma mark- private
+- (void)_excuteRefreshingAction {
+    !self.refreshingBlock ? : self.refreshingBlock();
+    if (!self.target || !self.refreshingSelector) return;
+    if ([self.target respondsToSelector:self.refreshingSelector]) {
+        IMP imp = [self.target methodForSelector:self.refreshingSelector];
+        void (*func)(id, SEL) = (void *)imp;
+        func(self.target, self.refreshingSelector);
+    }
 }
 @end
