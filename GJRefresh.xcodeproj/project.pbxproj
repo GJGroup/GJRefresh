@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4220CA841D81158F006E98A0 /* GCRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220CA831D81158F006E98A0 /* GCRefreshFooter.m */; };
-		4220CA871D813094006E98A0 /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4220CA861D813094006E98A0 /* MMScrollView.m */; };
 		4221FAF01D7FB65D00E655E8 /* GCRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4221FAEF1D7FB65D00E655E8 /* GCRefreshHeader.m */; };
 		4221FAF31D7FB6D000E655E8 /* GCRefreshIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4221FAF21D7FB6D000E655E8 /* GCRefreshIconView.m */; };
 		422E413B1D50BB4B00761DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 422E413A1D50BB4B00761DB5 /* main.m */; };
@@ -28,8 +27,6 @@
 /* Begin PBXFileReference section */
 		4220CA821D81158F006E98A0 /* GCRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRefreshFooter.h; sourceTree = "<group>"; };
 		4220CA831D81158F006E98A0 /* GCRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRefreshFooter.m; sourceTree = "<group>"; };
-		4220CA851D813094006E98A0 /* MMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScrollView.h; sourceTree = "<group>"; };
-		4220CA861D813094006E98A0 /* MMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScrollView.m; sourceTree = "<group>"; };
 		4221FAEE1D7FB65D00E655E8 /* GCRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRefreshHeader.h; sourceTree = "<group>"; };
 		4221FAEF1D7FB65D00E655E8 /* GCRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRefreshHeader.m; sourceTree = "<group>"; };
 		4221FAF11D7FB6D000E655E8 /* GCRefreshIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRefreshIconView.h; sourceTree = "<group>"; };
@@ -109,8 +106,6 @@
 				4221FAED1D7FB63100E655E8 /* RefreshDemo */,
 				422E413C1D50BB4B00761DB5 /* AppDelegate.h */,
 				422E413D1D50BB4B00761DB5 /* AppDelegate.m */,
-				4220CA851D813094006E98A0 /* MMScrollView.h */,
-				4220CA861D813094006E98A0 /* MMScrollView.m */,
 				422E413F1D50BB4B00761DB5 /* ViewController.h */,
 				422E41401D50BB4B00761DB5 /* ViewController.m */,
 				422E41421D50BB4B00761DB5 /* Main.storyboard */,
@@ -285,7 +280,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				423BE4F51D658189009FED19 /* GJRefreshFooter.m in Sources */,
-				4220CA871D813094006E98A0 /* MMScrollView.m in Sources */,
 				42E9C54C1D5C2BD100999C70 /* GJRefreshBaseView.m in Sources */,
 				422E41411D50BB4B00761DB5 /* ViewController.m in Sources */,
 				42E9C54F1D5C2DE500999C70 /* UIScrollView+GJRefresh.m in Sources */,

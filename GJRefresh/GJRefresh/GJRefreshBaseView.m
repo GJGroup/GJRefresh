@@ -213,8 +213,8 @@
 }
 
 - (void)layoutSubviews {
-    [super layoutSubviews];
     [self _resestRefreshView];
+    [super layoutSubviews];
 }
 - (void)_removeRefreshView {
     if (self.superview) {
